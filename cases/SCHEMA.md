@@ -45,6 +45,16 @@ written out from `case.json` (at finalize in faithful mode, at init in guided).
     "districts": ["N", "S", "E", "W", "C"],   // valid district codes for addresses
     "holmes": { "clues": 4, "free": [] },     // Holmes's clue count (the scoring target);
                                               // "free" = addresses that don't count, if any
+    "scoring": {                              // OPTIONAL — a reference ("par") and bands.
+      "reference_label": "Holmes",            //   omit the whole block and the scorer prints
+      "reference_score": 70,                  //   only the raw final score (no absolute scale).
+      "bands": [                              //   [max, label] pairs; null max = open-ended top.
+        [30, "even good investigators come up short."],
+        [55, "you solved most of the case."],
+        [69, "only Holmes would have found the gaps."],
+        [null, "you matched or beat the master."]
+      ]
+    },
     "config": {
       "count_empty_visits": true,             // a blind first visit to a gated address counts
       "default_questions_mode": "faithful",   // "faithful" (hard) | "guided"

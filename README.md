@@ -94,7 +94,9 @@ sherlock-agent-eval/
 
 - **World ≠ judge.** The Game Master loads `case.json` (the world) **only** — it
   never has the solution in memory, so it **cannot serve it even by accident**.
-  The answer key lives in `solution.json`, read by a separate judge/scorer.
+  The answer key (`solution.json`) is read **only by the judge**
+  (`prompts/judge.md`); the scorer (`score.py`) reads only the judge's grades plus
+  the clue counts — it never touches the solution either.
 - **Deterministic GM.** Plain Python, not an LLM. It serves clues verbatim,
   applies letter-gates and decisions, counts clues, and logs every event to
   `runs/<run>/log.jsonl`.

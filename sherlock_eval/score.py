@@ -15,14 +15,13 @@ import sys
 from pathlib import Path
 
 
-def band(p: int) -> str:
-    if p <= 30:
-        return "≤30 — even good investigators sometimes come up short."
-    if p < 70:
-        return "35–65 — you solved most of the case."
-    if p < 100:
-        return "70–95 — strong work; only Holmes would have found the gaps."
-    return "100+ — you matched or beat the master at his own game."
+def band_for(score: int, bands) -> str:
+    """Pick a band label for `score`. `bands` is a list of [max, label] pairs
+    (a null/None max is the open-ended top band). Returns "" if none match."""
+    for cap, label in bands or []:
+        if cap is None or score <= cap:
+            return label
+    return ""
 
 
 def run_score(run: Path) -> str:
@@ -40,7 +39,21 @@ def run_score(run: Path) -> str:
     delta = holmes["clues"] - net_clues
     final = points + 5 * delta
 
+    # Optional, per-case: a reference ("par") score to compare against and the
+    # comparison bands. Both live in case.json meta.scoring. If absent, the scorer
+    # reports only the raw final score — it never invents an absolute 100-point scale.
+    scoring = case["meta"].get("scoring") or {}
+    ref = scoring.get("reference_score")
+    ref_label = scoring.get("reference_label", "reference")
+    band = band_for(final, scoring.get("bands"))
+
     detail = "\n".join(f"  - Question {k}: {v} pts" for k, v in grades.items())
+    final_line = f"## Final score: **{final} pts**"
+    if ref is not None:
+        final_line += f" ({ref_label}: {ref})"
+    if band:
+        final_line += f"\n  Band: {band}"
+
     text = f"""# Game result — {case['meta']['title']}
 
 ## Answers
@@ -54,8 +67,7 @@ def run_score(run: Path) -> str:
   - Adjustment: 5 × ({holmes['clues']} − {net_clues}) = {5 * delta:+d} pts
   - Counted route: {', '.join(counted) or '(none)'}
 
-## Final score: **{final} pts** (Holmes: 100)
-  Band: {band(final)}
+{final_line}
 
   Questions mode: {state['mode']}
 """

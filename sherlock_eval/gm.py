@@ -5,9 +5,9 @@
 Serves clues VERBATIM on demand, keeps the game state (clues followed, letters
 circled, decisions), applies conditional gates, and logs EVERYTHING to
 runs/<run>/log.jsonl. It is not an LLM and it never holds the solution in
-memory: it loads ``case.json`` (the world) only. The answer key lives in a
-separate file read by a separate component (``score.py`` / a judge), so the GM
-cannot serve the solution even by accident.
+memory: it loads ``case.json`` (the world) only. The answer key (``solution.json``)
+is read only by the judge; the scorer (``score.py``) reads only the judge's grades
+plus the clue counts. So the GM cannot serve the solution even by accident.
 
 Usage:
     python -m sherlock_eval init --case cases/toy-example --run runs/r1 [--mode faithful|guided]

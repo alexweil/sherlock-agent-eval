@@ -149,7 +149,22 @@ def test_optimal_path_ties_holmes(tmp_path, capsys):
     (run / "grades.json").write_text(json.dumps({"1": 20, "2": 30, "3": 20}))
     text = score.run_score(run)
     assert "Adjustment: 5 × (4 − 4) = +0 pts" in text
-    assert "Final score: **70 pts**" in text
+    # reference + band come from case.json meta.scoring, not a hardcoded 100-scale.
+    assert "Final score: **70 pts** (Holmes: 70)" in text
+    assert "you matched or beat the master" in text
+
+
+def test_scoring_block_is_optional(run):
+    """With no meta.scoring, the scorer prints only the raw final score — no
+    reference and no band (it never invents an absolute scale)."""
+    case = json.loads((run / "case.json").read_text())
+    case["meta"].pop("scoring", None)
+    (run / "case.json").write_text(json.dumps(case))
+    (run / "grades.json").write_text(json.dumps({"1": 20, "2": 30, "3": 20}))
+    text = score.run_score(run)
+    assert "Final score: **90 pts**" in text   # 70 + 5*(4-0)
+    assert "Band:" not in text
+    assert "(Holmes" not in text               # no reference parenthetical
 
 
 def test_extra_clue_costs_five(tmp_path):

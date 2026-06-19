@@ -13,6 +13,16 @@
       "clues": 4,
       "free": []
     },
+    "scoring": {
+      "reference_label": "Holmes",
+      "reference_score": 70,
+      "bands": [
+        [30, "even good investigators sometimes come up short."],
+        [55, "you solved most of the case."],
+        [69, "strong work; only Holmes would have found the gaps."],
+        [null, "you matched or beat the master at his own game."]
+      ]
+    },
     "config": {
       "count_empty_visits": true,
       "default_questions_mode": "faithful",
