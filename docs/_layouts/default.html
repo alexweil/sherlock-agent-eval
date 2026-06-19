@@ -5,9 +5,20 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>{{ page.title | default: site.title }}</title>
   {% if page.description %}<meta name="description" content="{{ page.description }}">{% endif %}
+  {% assign social_image = page.image | default: '/duo-architecture.jpg' %}
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="{{ site.title }}">
+  <meta property="og:url" content="{{ page.url | absolute_url }}">
   <meta property="og:title" content="{{ page.title | default: site.title }}">
   {% if page.description %}<meta property="og:description" content="{{ page.description }}">{% endif %}
-  <meta name="twitter:card" content="summary">
+  <meta property="og:image" content="{{ social_image | absolute_url }}">
+  <meta property="og:image:width" content="{{ page.image_width | default: 1672 }}">
+  <meta property="og:image:height" content="{{ page.image_height | default: 941 }}">
+  <meta property="og:image:alt" content="{{ page.image_alt | default: 'Two agents split by job: a Theorist that only reasons, walled off from an Explorer that only acts, linked by a verbatim Conductor.' }}">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="{{ page.title | default: site.title }}">
+  {% if page.description %}<meta name="twitter:description" content="{{ page.description }}">{% endif %}
+  <meta name="twitter:image" content="{{ social_image | absolute_url }}">
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'><text y='14' font-size='14'>🔎</text></svg>">
   <style>
     :root{
