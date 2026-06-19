@@ -1,3 +1,12 @@
 title: sherlock-agent-eval
 description: A cheat-resistant detective board-game harness for evaluating LLM agents.
-theme: jekyll-theme-cayman
+github_url: https://github.com/alexweil/sherlock-agent-eval
+url: https://alexweil.github.io
+baseurl: /sherlock-agent-eval
+
+# Use the repo's own clean layout (docs/_layouts/default.html), not a gem theme.
+defaults:
+  - scope:
+      path: ""
+    values:
+      layout: default
