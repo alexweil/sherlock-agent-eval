@@ -1,0 +1,23 @@
+{
+  "holmes_clues": 4,
+  "questions": [
+    {
+      "n": 1,
+      "points": 20,
+      "answer": "T. Thorn, the Harbour Office night supervisor (the inside man), killed Dunmore. The motive was the cipher KEY, not the ledger: the ledger (\"the book\") is worthless without the key, which Dunmore never carried.",
+      "rubric": "Full (20): names Thorn / the Harbour Office inside man AND gives the motive as the key, not the ledger. Half (10): names the killer but says he was after the ledger. Zero: blames Crale (the decoy suspect)."
+    },
+    {
+      "n": 2,
+      "points": 30,
+      "answer": "The real target is Miss Eleanor Hale, the lamplighter's lodger, who holds the cipher key. She is ALIVE — shown by the killer still hunting her name the morning after the murder and theft (you don't hunt a corpse). The dead courier Dunmore is a decoy.",
+      "rubric": "Full (30): identifies Hale as the real, LIVING target AND grounds 'alive' in the still-hunting behaviour (2 N) or the booked outbound berth (index). Half (15): says the target is alive but does not name Hale, OR names Hale without justifying she is alive. Zero: says the dead courier was the real target."
+    },
+    {
+      "n": 3,
+      "points": 20,
+      "answer": "She fled to her sister's rooms above Crale's stall at 3 S, intending to take ship on the SS Marlow (Thursday).",
+      "rubric": "Full (20): 3 S / the rooms above Crale's stall, OR the SS Marlow outbound passage. Half (10): 'fleeing by ship' with no address, or the address with no escape. Zero: still at 7 E, or unknown."
+    }
+  ]
+}

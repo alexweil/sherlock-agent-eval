@@ -1,0 +1,30 @@
+# --- Anti-leak guardrails (see NOTICE.md / README.md) ---
+# Never commit a real game's transcribed content. Only the original toy-example
+# and the your-case placeholder are tracked under cases/.
+/cases/*/
+!/cases/toy-example/
+!/cases/your-case/
+/cases/your-case/*
+!/cases/your-case/.gitkeep
+
+# All run outputs are local.
+/runs/
+
+# A private denylist for the leakage audit must live OUTSIDE the repo.
+# As a backstop, never commit anything that looks like one.
+*denylist*
+*leakcheck*.txt
+
+# --- Python ---
+__pycache__/
+*.py[cod]
+*.egg-info/
+.eggs/
+build/
+dist/
+.pytest_cache/
+.venv/
+venv/
+
+# --- macOS ---
+.DS_Store

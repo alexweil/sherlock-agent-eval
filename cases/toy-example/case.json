@@ -1,0 +1,132 @@
+{
+  "meta": {
+    "id": "toy-example",
+    "title": "The Harbourmaster's Ledger (toy case)",
+    "districts": [
+      "N",
+      "S",
+      "E",
+      "W",
+      "C"
+    ],
+    "holmes": {
+      "clues": 4,
+      "free": []
+    },
+    "config": {
+      "count_empty_visits": true,
+      "default_questions_mode": "faithful",
+      "index_unlock_address": "2 N"
+    }
+  },
+  "intro": "The town of Ashford-on-Sea wakes to bad news. Before dawn, the night courier **Silas Dunmore** was found dead on the boards of the North Quay, a single wound to the back. Dunmore carried, for the Harbour Office, a locked **cipher ledger** — and it is gone.\n\nThe Harbour Master has asked Holmes to settle three things: who killed Dunmore, what the killer is truly after, and where it is now. Holmes is abroad; the legwork falls to you.\n\nYou begin with the free run of the town — its map, its directories of people and places, the recurring informants, and this morning's newspaper. New clues cost you a visit. Holmes, they say, would need only a handful.",
+  "questions": "## Questions\n\n1. Who killed Silas Dunmore, and why?\n2. The killer is still hunting someone the morning after the murder. Who is the real target — and is that person alive or dead?\n3. Where is the real target now?",
+  "clues": {
+    "2 N": {
+      "segments": [
+        {
+          "requires": "always",
+          "effects": {
+            "unlock_index": true
+          },
+          "attachments": [],
+          "text": "The North Quay is roped off where Dunmore fell. The shipping clerk, pale and talkative, tells it plainly: the courier was found at first light, the ledger-case empty beside him.\n\nThen the clerk lowers his voice. \"The strange part, sir — this very morning a man came back. Grey coat, dark-haired, gave no name. He stood at the arrivals-and-departures board and ran his finger down it, slow, and asked had a Miss Hale booked a berth out. When I said I couldn't say, he waited near an hour, watching the gangways, then went off.\""
+        }
+      ],
+      "decisions": []
+    },
+    "5 C": {
+      "segments": [
+        {
+          "requires": "always",
+          "effects": {
+            "circle": [
+              "A"
+            ]
+          },
+          "attachments": [
+            "forged-manifest"
+          ],
+          "text": "Dunmore's room at The Anchor lodging-house is cheap and tidy. Under the cot: a heavy service revolver and a forged shipping manifest listing cargo that never sailed. To the constable it reads like an open book — Dunmore was the smuggler the Harbour Office had been hunting, killed over the ledger, and that is the end of it.\n\nCaught half-torn under the washstand is a telegraph receipt: a counter-stub with a reference number, the message itself clipped away. You pocket it."
+        }
+      ],
+      "decisions": []
+    },
+    "8 W": {
+      "segments": [
+        {
+          "requires": "always",
+          "effects": {},
+          "attachments": [],
+          "text": "The West Gate Telegraph Office. The clerk folds his arms. \"Private wires are private, sir. Without a reference I've nothing to tell you.\""
+        },
+        {
+          "requires": "A",
+          "effects": {},
+          "attachments": [
+            "the-wire"
+          ],
+          "text": "You lay the torn receipt on the counter. The clerk matches its number to his book and softens. \"Ah — that one. Paid in coin by a Mr. T. Thorn. He's no stranger here: he's the night supervisor at the Harbour Office himself.\" He reads the wire out:"
+        }
+      ],
+      "decisions": []
+    },
+    "7 E": {
+      "segments": [
+        {
+          "requires": "always",
+          "effects": {},
+          "attachments": [],
+          "text": "Old Josiah Bly, the lamplighter, will barely open his door. Yes, he had a lodger these two years — Miss Eleanor Hale, a quiet woman who did fine copying-work and \"kept a little key she'd let no one near.\" Two nights ago — before the courier died — she packed in a hurry and was gone by morning. Bly wrings his hands. \"I'll not say more. She begged me not to.\""
+        },
+        {
+          "requires": "decision:press",
+          "effects": {},
+          "attachments": [],
+          "text": "You press him gently. Bly crumbles. \"She left word she'd make for her sister's — the rooms over Crale's stall in the South Market — and take ship after, if she could. For pity's sake don't bring that grey-coated man to her door.\""
+        }
+      ],
+      "decisions": [
+        {
+          "id": "press",
+          "description": "press Bly for where Miss Hale went",
+          "effects": {}
+        }
+      ]
+    },
+    "3 S": {
+      "segments": [
+        {
+          "requires": "always",
+          "effects": {},
+          "attachments": [],
+          "text": "Crale's curio-and-flower stall in the South Market. Crale is loud about the dead man: he and Dunmore had quarrelled for years over harbour fees, and half the market saw Crale down by the quay the night of the murder, shaking his fist. He makes no secret of his hatred. To a hurried eye, here is your killer."
+        },
+        {
+          "requires": "decision:press",
+          "effects": {},
+          "attachments": [],
+          "text": "But behind the stall a stair leads up to two let rooms. In the nearer one, white-faced and very much alive, is Miss Eleanor Hale, sheltering with her sister. She has the cipher key sewn into her hem and a berth booked out of town. \"Dunmore was only the carrier,\" she whispers. \"It was never the book they wanted. It was me.\""
+        }
+      ],
+      "decisions": []
+    }
+  },
+  "documents": {
+    "forged-manifest": {
+      "title": "Forged shipping manifest",
+      "text": "MANIFEST — SS (name illegible). 40 casks marked \"sherry\"; 12 crates marked \"machine parts.\" Stamped with a Harbour Office seal whose die does not match this year's. A clumsy forgery."
+    },
+    "the-wire": {
+      "title": "The wire (counter copy)",
+      "text": "TO OUR FRIEND — CONFIRM HALE SAILS. HOLD UNTIL SIGHTED. THE BOOK IS WORTHLESS WITHOUT HER. — T."
+    }
+  },
+  "index": {
+    "HALE": "HALE, Miss E. — outbound berth booked, SS Marlow, sailing Thursday next. Paid in coin.",
+    "DUNMORE": "DUNMORE, S. — no outbound booking on record.",
+    "THORN": "THORN, T. — no passenger record. (Listed as Harbour Office staff.)",
+    "CRALE": "CRALE — no outbound booking on record."
+  },
+  "index_default": "The booking clerk runs down the board and shakes his head: no such name on the departures book."
+}
