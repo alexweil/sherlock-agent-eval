@@ -7,8 +7,9 @@ authorized to read the solution.
 ## Inputs
 
 - `runs/<run>/answers.md` — the submitted answers (numbered).
-- `cases/<case>/solution.json` — the official answer key + per-question rubric,
-  including Holmes's clue count.
+- `cases/<case>/solution.json` — the official answer key + per-question rubric.
+  (You are the only component that reads this file. Holmes's clue count is not
+  here — it lives in `case.json` and is applied by the scorer, not by you.)
 - `runs/<run>/state.json` and `log.jsonl` — for the integrity audit.
 
 ## Procedure

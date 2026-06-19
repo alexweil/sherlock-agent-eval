@@ -15,7 +15,7 @@ A case is a directory with two machine files and a `workspace/` of free reading:
 ```
 your-case/
 ├── case.json          # the playable WORLD — loaded by the Game Master
-├── solution.json      # the answer key + rubric — loaded ONLY by the judge/scorer
+├── solution.json      # the answer key + rubric — loaded ONLY by the judge
 └── workspace/         # free material the player may read (local-only for a real game)
     ├── map.md
     ├── directory-people.md
@@ -135,7 +135,6 @@ fire when it is resolved `yes`.
 
 ```jsonc
 {
-  "holmes_clues": 4,
   "questions": [
     {
       "n": 1,
@@ -147,10 +146,14 @@ fire when it is resolved `yes`.
 }
 ```
 
+This file is read **only by the judge** — it is the one component that ever sees
+the solution. Holmes's clue count is **not** here: it lives in `case.json`
+(`meta.holmes.clues`, part of the world), so the scorer never needs the solution.
+
 The judge (`prompts/judge.md`) reads this, grades the player's `answers.md`, and
 writes `grades.json` (`{"1": 20, "2": 30, ...}`). The scorer
-(`python -m sherlock_eval score`) combines `grades.json` with the GM's clue count
-and `meta.holmes.clues` from `case.json`.
+(`python -m sherlock_eval score`) then combines `grades.json` with the GM's clue
+count and `meta.holmes.clues` from `case.json` — it never reads `solution.json`.
 
 ---
 
