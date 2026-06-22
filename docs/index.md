@@ -21,9 +21,9 @@ That's the headline. But the score isn't the story. The interesting part is the 
 
 ## Why a board game is a surprisingly honest agent eval
 
-Most agent benchmarks have a problem: the answer is somewhere in the context, or the task is gameable, or "success" is graded loosely. A printed detective game sidesteps all three by construction:
+What I didn't see at the table that night is that we'd just lost to a near-perfect agent benchmark. Most agent benchmarks have a problem: the answer is somewhere in the context, or the task is gameable, or "success" is graded loosely. A printed detective game sidesteps all three by construction:
 
-- **The solution is physically hidden.** In the box, the answers are printed at the back, upside down; the player isn't supposed to look. The solution isn't in the agent's allowed workspace; reading it would be a detectable protocol violation, and I audit for it.
+- **The solution is physically hidden.** Those upside-down answers never enter the agent's allowed workspace; reading them would be a detectable protocol violation, and I audit for it.
 - **Information has a price.** Thinking, re-reading, and cross-referencing are free and unlimited. But *acting* — visiting a location to pull a new clue — is the only way to get new information, and every new clue beyond what Holmes used **costs points**. That's a miniature of real agent economics: every tool call costs something.
 - **It rewards comprehension, not retrieval.** Clues are behaviors and details you have to assemble into one coherent story; none of them hands you the answer.
 
@@ -70,7 +70,7 @@ The move: instead of one agent that both explores and reasons, use **two agents 
 
 ![Two agents, split by job. A Theorist that only reasons — no world access, no search, no Game Master, fresh context each turn — is walled off from an Explorer that only acts, linked by a Conductor that relays requests and clues verbatim. The Explorer greps local directories for free and visits the Game Master at the cost of one clue; the Game Master holds the hidden solution.](duo-architecture.jpg)
 
-Why would this help? Not because the context is cleaner — the clean-monolith control below keeps it clean and still falls. My read is that the Theorist never *does* the exploration: it never builds the obvious-reading-first frame that hunting for clues instills, and it isn't committed to a story its own legwork kept reinforcing. Blinded from the mechanics of exploring, it reads each clue cold. And here's the part worth being precise about: this isn't the Theorist *connecting* facts the monolith couldn't. The monolith had the same served clues, the same model, and the same fresh-memory setup — stitching scattered facts into a relation is something both can do. What differs is the *prior* that stitching runs under, plus the standing order that shapes it: the Theorist's one job is to *falsify* its leading hypothesis, not defend it. The second-order move isn't "connect A and B" — it's "use B to kill the hypothesis that A made tempting." Given the same `still-hunting` clue, the monoliths that reached it still misread it — but the Theorist made the call out loud:
+Why would this help? Not because the context is cleaner — the clean-monolith control below keeps it clean and still falls. My read is that the Theorist never *does* the exploration: it never builds the obvious-reading-first frame that hunting for clues instills, and it isn't committed to a story its own legwork kept reinforcing. Blinded from the mechanics of exploring, it reads each clue cold. And here's the part worth being precise about: this isn't the Theorist *connecting* facts the monolith couldn't. The monolith had the same served clues, the same model, and the same fresh-memory setup — stitching scattered facts into a relation is something both can do. What differs is the *prior* that stitching runs under, plus the standing order that shapes it: the Theorist's one job is to *falsify* its leading hypothesis, not defend it. The second-order move isn't "connect A and B" — it's "use B to kill the hypothesis that A made tempting." Given the same `still-hunting` clue, the monoliths that reached it still misread it — but the Theorist made the call out loud. By then a few facts about the case had surfaced — the murdered man and the hunted woman were siblings, and the killers had tortured her for hours trying to get a name — and the Theorist put them together:
 
 > *"They tortured the sister for hours to extract an identity. If the dead brother were the infiltrated agent, they'd already have him — they wouldn't need to drag a name out of her. The killer is still acting on an open order. Therefore the agent is alive, and it isn't the dead man."*
 
@@ -138,7 +138,7 @@ Two alternatives these controls ruled out as sole explanations in this setup: cl
 - A "naming-completeness" pass so the duo stops leaving named-but-unidentified actors on the table.
 - Longer-horizon cases, a red-team of the isolation, and non-Anthropic models in the same harness.
 
-The setup is a board game. The findings aren't about board games — they're about the two ways agents fail at thinking, and the surprising news that the harder one might be something you can wire around.
+The setup is a board game. The findings aren't about board games — they're about the two ways agents fail at thinking, and the surprising news that the harder one might be something you can wire around. None of us made that turn at dinner. What still surprises me is that the agent that finally did wasn't the smartest one at the table — it was the one I'd walled off from the hunt entirely, and left with nothing to do but think.
 
 ---
 
