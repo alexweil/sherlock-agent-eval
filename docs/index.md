@@ -5,13 +5,19 @@ description: "Topology beat model size."
 
 # A Sherlock Holmes board game as an LLM-agent eval — topology beat model size
 
-I took a Sherlock Holmes detective board game and turned it into an eval for LLM agents. If you've never played one: it's an open-ended deduction game. You're handed a case, you decide which people and places around Victorian London to go investigate, each lead you follow hands you a passage of text, and at the end you answer the case's questions — and your solution is scored against Holmes's own, including how *few* leads you needed to get there.
+It started at a dinner. A few of us sat down to play *Sherlock Holmes Consulting Detective* — an open-ended deduction game where you're handed a Victorian London case, you pick which people and places to go investigate, and each lead hands you a passage of text to read. Most of the game is reading, cross-referencing, and arguing at the table. At the end you answer the case's questions and score yourself against Holmes himself — including how *few* leads you needed. The answers sit in the back of the booklet, printed upside-down, daring you not to peek.
 
-The agent plays the **Irregulars** — the Baker Street street kids Holmes sends out to do his legwork.
+We walked straight into the trap the case is built around. There's an obvious victim — a man every detail points to as the target — and we hung our whole theory on him. But one clue wouldn't sit still. The morning after the murder, the killer goes *back* to a shipping office and scans the passenger list again. We re-read the passage three times. Why would he do that? If he'd already killed the person he was after, what was he still looking for? Something didn't close, and none of us could say what.
+
+So, near midnight and out of wine, we did the forbidden thing: we turned the booklet over. And there in the answer key, a name we'd treated as background all evening stepped forward as the real undercover agent — alive, never caught, the person the killer was still hunting. The passenger-list visit wasn't a loose end. It *was* the case. We'd held the contradiction in our hands — we'd even said out loud that it was strange — and we'd read right past it.
+
+That non-closing feeling is the thing that stuck. We weren't short on information; we had every clue we needed. We were short one *inference* — the small, second-order turn from "that's a strange thing for the killer to do" to "then the whole story we've built is wrong." So I started to wonder whether a machine would do any better. Handed the same leads, would an LLM agent read that behavior as a behavior, notice it broke the obvious story, and follow it to the live agent we'd missed?
+
+To find out, I turned the game into an eval for LLM agents. The agent plays the **Irregulars** — the Baker Street street kids Holmes sends out to do his legwork.
 
 On its first run, **Claude Fable 5 tied Holmes** — in the hard mode, where you don't even get to see the questions until the investigation is over.
 
-That's the headline. But the score isn't the story. The interesting part is the two distinct ways these agents fail — and that the harder failure has a clean fix that turned out to be less about model size than I expected.
+That's the headline. But the score isn't the story. The interesting part is the two distinct ways these agents fail — and that the harder failure, the exact one that beat us at dinner, has a clean fix that turned out to be less about model size than I expected.
 
 ## Why a board game is a surprisingly honest agent eval
 
@@ -39,11 +45,9 @@ If you build RAG or research agents, you know this bug — the one where the mod
 
 ### Failure 2 — Comprehension: the obvious suspect is a decoy
 
-The case is built around a decoy. The murdered man is, on the surface, the obvious "agent" — a former detective, an American who just arrived in London. Every detail invites you to conclude he's the target.
+This is the trap from the dinner, named precisely. The murdered man is, on the surface, the obvious "agent" — a former detective, an American just arrived in London. Every detail invites you to conclude he's the target. He isn't: the real undercover agent is the *living* woman the killer is *still hunting*, and the tell is the behavior we couldn't explain at the table — you don't hunt a corpse.
 
-He isn't. The real undercover agent is a *living* woman the killer is *still hunting*. The decisive clue isn't a fact — it's a **behavior**: after the murders, the killer is back at the shipping office that morning, scanning the passenger list. If the dead man were the agent, why is the killer still looking? You don't hunt a corpse.
-
-Call this **the decoy trap**: the obvious suspect is a stand-in, and the real answer is the one you have to *infer* is still out there. Escaping it — reading a clue as a behavior, noticing the behavior contradicts the obvious story, concluding the obvious story is wrong — is **second-order** reasoning. And it's where almost every configuration falls down: a single-agent "methodical detective" prompt, run across nine playthroughs of this one case, fell for the decoy trap **9 times out of 9.**
+Call this **the decoy trap**: the obvious suspect is a stand-in, and the real answer is the one you have to *infer* is still out there. Escaping it — reading a clue as a behavior, noticing it contradicts the obvious story, concluding the obvious story is wrong — is the **second-order** turn we failed to make. And it's where almost every configuration falls down: a single-agent "methodical detective" prompt, run across nine playthroughs of this one case, fell for the decoy trap **9 times out of 9.**
 
 These two failures organize everything else: *execution* errors (you understood it and fumbled it) versus *comprehension* errors (you never understood it).
 
