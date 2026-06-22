@@ -67,6 +67,45 @@ cd runs/demo/workspace
 
 Then grade and score (see *Scoring* below).
 
+## The world & the commands
+
+The agent works entirely inside `runs/<run>/workspace/`. The world is a grid of
+addresses; everything else is free to read.
+
+- **Addresses.** Every location is `<number> <district>` (e.g. `5 C`, `38 CE`).
+  You reach one by resolving a name into an address through two **directories** —
+  person→address and place→address — that the agent searches with `grep` (in a
+  full case they run to a couple thousand entries, too large to read whole).
+- **Free material** (zero cost, unlimited): the case intro, the rules, a map, a
+  list of recurring informants, and the day's **newspaper**. Thinking, rereading,
+  directory lookups, and `status` are all free — only **visiting** an address
+  buys a new clue.
+
+**Command surface** — the agent drives the Game Master with `./gm <cmd>`:
+
+| Command | Cost | What it does |
+|---|---|---|
+| `visit "<addr>"` | **1 clue** | returns that address's clue **verbatim** — the only paid action |
+| `reread "<addr>"` | free | re-read a clue you already paid for |
+| `decide "<addr>" <branch> <choice>` | free | resolve a branch a clue offers |
+| `index "<name>"` | free | a counter/index lookup, unlocked by a specific visit |
+| `status` | free | progress so far: clues followed, letters circled, decisions |
+| `questions` | free | show the case's questions (in **faithful** mode, only after `finalize`) |
+| `finalize` | — | end the investigation and reveal the questions |
+| `submit answers.md` | — | hand in answers — **irreversible** |
+
+**Scoring rules that shape strategy** (the formula is in [Scoring](#scoring)):
+
+- Some clues **circle a letter** that gates conditional paragraphs at *other*
+  addresses, so visit order changes what you can see.
+- A first visit to a real address counts even if a letter-gate hides its content
+  (visiting blind is punished); a re-visit counts only if it reveals new content;
+  a **"miss"** (an address with no clue this case) doesn't score, but the audit
+  flags it as wasted motion.
+- **Faithful mode** (`--mode faithful`, used in the Quick start) withholds the
+  questions until you `finalize` — you investigate without knowing what you'll be
+  asked.
+
 ## Repo layout
 
 ```
