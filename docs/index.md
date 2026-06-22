@@ -7,7 +7,7 @@ description: "A Sherlock Holmes board game as an LLM-agent eval"
 
 *A Sherlock Holmes board game as an LLM-agent eval*
 
-It started at a dinner. A few of us sat down to play *Sherlock Holmes Consulting Detective* — an open-ended deduction game where you're handed a Victorian London case, you pick which people and places to go investigate, and each lead hands you a passage of text to read. Most of the game is reading, cross-referencing, and arguing at the table. At the end you answer the case's questions and score yourself against Holmes himself — including how *few* leads you needed. The answers sit in the back of the booklet, printed upside-down, daring you not to peek.
+It started at a dinner. A few friends and I sat down to play *Sherlock Holmes Consulting Detective* — an open-ended deduction game where you're handed a Victorian London case, you pick which people and places to go investigate, and each lead hands you a passage of text to read. Most of the game is reading, cross-referencing, and arguing at the table. At the end you answer the case's questions and score yourself against Holmes himself — including how *few* leads you needed. The answers sit in the back of the booklet, printed upside-down, daring you not to peek.
 
 We walked straight into the trap the case is built around. There's an obvious victim — a man every detail points to as the target — and we hung our whole theory on him. But one clue wouldn't sit still. The morning after the murder, the killer goes *back* to a shipping office and scans the passenger list again. We re-read the passage three times. Why would he do that? If he'd already killed the person he was after, what was he still looking for? Something didn't close, and none of us could say what.
 
