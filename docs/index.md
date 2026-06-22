@@ -1,6 +1,10 @@
 ---
 title: "How good a detective is an AI?"
 description: "A Sherlock Holmes board game as an LLM-agent eval"
+image: /cover-art.jpg
+image_width: 1200
+image_height: 630
+image_alt: "Cover art of Sherlock Holmes Consulting Detective — a magnifying glass over photographs of the Baker Street Irregulars."
 ---
 
 # How good a detective is an AI?
@@ -138,4 +142,4 @@ The setup is a board game. The findings aren't about board games — they're abo
 
 *A note on models: I used Anthropic's models throughout — as examples, and for practicality, because they gave me a clean capability ladder to vary, topped by Claude Fable 5 (the strongest player here). Anthropic temporarily disabled Claude Fable 5 on June 12; I'd gotten only three runs with it by then, which is why every Claude Fable 5 result here rests on at most three playthroughs. The findings are about agent topology, not any one vendor or model; the same harness would run others.*
 
-*A note on the game: the case comes from [Sherlock Holmes Consulting Detective: Baker Street Irregulars](https://www.spacecowboys-games.com/game/the-baker-street-irregulars/), published by Space Cowboys. It's a commercial product, so I paraphrase its material rather than reproduce it, and quote only the agents' own reasoning.*
+*A note on the game: the case comes from [Sherlock Holmes Consulting Detective: Baker Street Irregulars](https://www.spacecowboys-games.com/game/the-baker-street-irregulars/), published by Space Cowboys. It's a commercial product, so I paraphrase its case material rather than reproduce it, and quote only the agents' own reasoning. The publisher's cover art appears only as this page's link-preview image — shown for identification and commentary, © Space Cowboys, and not covered by this site's CC BY license.*
