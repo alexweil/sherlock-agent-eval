@@ -5,7 +5,7 @@ description: "A Sherlock Holmes board game, rebuilt as an LLM-agent eval — whe
 
 # How good a detective is an AI?
 
-*A Sherlock Holmes board game, rebuilt as an LLM-agent eval — where topology beat model size.*
+*A Sherlock Holmes board game as an LLM-agent eval*
 
 It started at a dinner. A few of us sat down to play *Sherlock Holmes Consulting Detective* — an open-ended deduction game where you're handed a Victorian London case, you pick which people and places to go investigate, and each lead hands you a passage of text to read. Most of the game is reading, cross-referencing, and arguing at the table. At the end you answer the case's questions and score yourself against Holmes himself — including how *few* leads you needed. The answers sit in the back of the booklet, printed upside-down, daring you not to peek.
 
