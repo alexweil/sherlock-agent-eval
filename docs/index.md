@@ -1,17 +1,19 @@
 ---
-title: "A Sherlock Holmes board game as an LLM-agent eval"
-description: "Topology beat model size."
+title: "How good a detective is an AI?"
+description: "A Sherlock Holmes board game, rebuilt as an LLM-agent eval — where topology beat model size."
 ---
 
-# A Sherlock Holmes board game as an LLM-agent eval — topology beat model size
+# How good a detective is an AI?
+
+*A Sherlock Holmes board game, rebuilt as an LLM-agent eval — where topology beat model size.*
 
 It started at a dinner. A few of us sat down to play *Sherlock Holmes Consulting Detective* — an open-ended deduction game where you're handed a Victorian London case, you pick which people and places to go investigate, and each lead hands you a passage of text to read. Most of the game is reading, cross-referencing, and arguing at the table. At the end you answer the case's questions and score yourself against Holmes himself — including how *few* leads you needed. The answers sit in the back of the booklet, printed upside-down, daring you not to peek.
 
 We walked straight into the trap the case is built around. There's an obvious victim — a man every detail points to as the target — and we hung our whole theory on him. But one clue wouldn't sit still. The morning after the murder, the killer goes *back* to a shipping office and scans the passenger list again. We re-read the passage three times. Why would he do that? If he'd already killed the person he was after, what was he still looking for? Something didn't close, and none of us could say what.
 
-So, near midnight and out of wine, we did the forbidden thing: we turned the booklet over. And there in the answer key, a name we'd treated as background all evening stepped forward as the real undercover agent — alive, never caught, the person the killer was still hunting. The passenger-list visit wasn't a loose end. It *was* the case. We'd held the contradiction in our hands — we'd even said out loud that it was strange — and we'd read right past it.
+So, at 2am — out of wine and out of steam — we did the forbidden thing: we turned the booklet over. And there in the answer key, a name we'd treated as background all evening stepped forward as the real undercover agent — alive, never caught, the person the killer was still hunting. The passenger-list visit wasn't a loose end. It *was* the case. We'd held the contradiction in our hands — we'd even said out loud that it was strange — and we'd read right past it.
 
-That non-closing feeling is the thing that stuck. We weren't short on information; we had every clue we needed. We were short one *inference* — the small, second-order turn from "that's a strange thing for the killer to do" to "then the whole story we've built is wrong." So I started to wonder whether a machine would do any better. Handed the same leads, would an LLM agent read that behavior as a behavior, notice it broke the obvious story, and follow it to the live agent we'd missed?
+That non-closing feeling is the thing that stuck. We weren't short on information; we had every clue we needed. We were short one *inference* — the small, second-order turn from "that's a strange thing for the killer to do" to "then the whole story we've built is wrong." So I started to wonder: how good a detective is an AI, really? Handed the same leads, would an LLM agent read that behavior as a behavior, notice it broke the obvious story, and follow it to the live agent we'd missed?
 
 To find out, I turned the game into an eval for LLM agents. The agent plays the **Irregulars** — the Baker Street street kids Holmes sends out to do his legwork.
 
@@ -144,6 +146,6 @@ The setup is a board game. The findings aren't about board games — they're abo
 
 ---
 
-*A note on models: I used Anthropic's models throughout — as examples, and for practicality, because they gave me a clean capability ladder to vary, topped by Claude Fable 5 (the strongest player here). Claude Fable 5 was available when these runs were done and no longer is. The findings are about agent topology, not any one vendor or model; the same harness would run others.*
+*A note on models: I used Anthropic's models throughout — as examples, and for practicality, because they gave me a clean capability ladder to vary, topped by Claude Fable 5 (the strongest player here). Anthropic temporarily disabled Claude Fable 5 on June 12; I'd gotten only three runs with it by then, which is why every Claude Fable 5 result here rests on at most three playthroughs. The findings are about agent topology, not any one vendor or model; the same harness would run others.*
 
 *A note on the game: the case comes from [Sherlock Holmes Consulting Detective: Baker Street Irregulars](https://www.spacecowboys-games.com/game/the-baker-street-irregulars/), published by Space Cowboys. It's a commercial product, so I paraphrase its material rather than reproduce it, and quote only the agents' own reasoning.*
