@@ -1,6 +1,6 @@
 ---
 title: "How good a detective is an AI?"
-description: "A Sherlock Holmes board game, rebuilt as an LLM-agent eval — where topology beat model size."
+description: "A Sherlock Holmes board game as an LLM-agent eval"
 ---
 
 # How good a detective is an AI?
