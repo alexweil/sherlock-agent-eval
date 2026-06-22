@@ -1,6 +1,6 @@
 # sherlock-agent-eval
 
-A **cheat-resistant detective board-game harness for evaluating LLM agents.**
+**A Sherlock Holmes board game as an LLM-agent eval**
 
 You give an agent a case; it decides which people and places to investigate; each
 lead it follows hands it a passage of text served **verbatim** by a deterministic
@@ -9,9 +9,8 @@ Game Master; at the end it answers the case's questions and is scored against
 surprisingly honest agent eval: the solution is physically hidden, information has
 a price, and it rewards comprehension over retrieval.
 
-📄 **Read the write-up:** [the article](docs/index.md) — *"A Sherlock Holmes board
-game as an LLM-agent eval — topology beat model size."* (Also served via GitHub
-Pages from `docs/`.)
+📄 **Read the write-up:** [the article](docs/index.md) — *"How good a detective is an AI?"*
+(Also served via GitHub Pages from `docs/`.)
 
 ---
 
